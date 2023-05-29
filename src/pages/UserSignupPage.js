@@ -19,6 +19,15 @@ class UserSignupPage extends React.Component{
         //errors objesinin kopyasını oluşturuyoruz.
         const errors = {... this.state.errors}
         errors[name] = undefined;
+        if(name === 'password' || name === 'passwordRepeat'){
+            if(name === 'password' && value !== this.state.passwordRepeat){
+                errors.passwordRepeat = 'Password mismatch';
+            }else if(name ==='passwordRepeat' && value !== this.state.password){
+                errors.passwordRepeat = 'Password mismatch';
+            }else{
+                errors.passwordRepeat = undefined;
+            }
+        }
         //const value = event.target.value;
         //const name = event.target.name;
         this.setState({
@@ -55,7 +64,7 @@ class UserSignupPage extends React.Component{
 
     render(){
         const {pendingApiCall,errors} = this.state;
-        const {username,displayName,password} = errors;
+        const {username,displayName,password,passwordRepeat} = errors;
         return(
             <div className="container">
                 <form>
@@ -64,12 +73,12 @@ class UserSignupPage extends React.Component{
 
                     <Input name="displayName" label="Display Name" error={displayName} onChange={this.onChange} />
                     <Input name="password" label="Password" error={password} onChange={this.onChange} type="password" />
-                    <Input name="passwordRepeat" label="Password Repeat" error={password} onChange={this.onChange} type="password" />
+                    <Input name="passwordRepeat" label="Password Repeat" error={passwordRepeat} onChange={this.onChange} type="password" />
 
                     <div className="text-center mt-3">
                         <button className="btn btn-primary"  
                         onClick={this.onClickSignup}
-                        disabled={pendingApiCall}>
+                        disabled={pendingApiCall || passwordRepeat !== undefined}>
                             
                             {pendingApiCall && <span className="spinner-border spinner-border-sm "></span>}Sign Up
                         </button>
