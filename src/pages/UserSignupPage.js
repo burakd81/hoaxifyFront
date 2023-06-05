@@ -1,8 +1,8 @@
 import React from "react";
-import {signUp,changeLanguage} from "../api/apiCalls";
+import {signUp} from "../api/apiCalls";
 import { Input } from "../components/Input";
 import {withTranslation} from 'react-i18next';
-import {Tr,Us} from "react-flags-select";
+
 
 class UserSignupPage extends React.Component{
 
@@ -39,12 +39,7 @@ class UserSignupPage extends React.Component{
         })
     }
 
-    onChangeLanguage = language =>{
-        const {i18n} = this.props;
-        i18n.changeLanguage(language);
-        changeLanguage(language);
 
-    }
 
     onClickSignup = async event =>{
         
@@ -92,14 +87,11 @@ class UserSignupPage extends React.Component{
                         onClick={this.onClickSignup}
                         disabled={pendingApiCall || passwordRepeat !== undefined}>
                             
-                            {pendingApiCall && <span className="spinner-border spinner-border-sm "></span>}Sign Up
+                            {pendingApiCall && <span className="spinner-border spinner-border-sm "></span>}{t('Sign Up')}
                         </button>
                         
                     </div>
-                    <div>
-                        <Tr width="24px" onClick={()=>this.onChangeLanguage('tr')} style={{cursor:'pointer'}} />
-                        <Us width="24px" className="m-3" onClick={()=>this.onChangeLanguage('en')}  style={{cursor:'pointer'}} />
-                    </div>
+
 
                 </form>
             </div>

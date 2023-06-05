@@ -13,7 +13,8 @@ i18n
           'Username':'Username',
           'Display Name':'Display Name',
           'Password':'Password',
-          'Password Repeat':'Password Repeat'
+          'Password Repeat':'Password Repeat',
+          'Login':'Login'
         }
       },
       tr: {
@@ -24,7 +25,8 @@ i18n
           'Username':'Kullanıcı Adı',
           'Display Name':'Tercih Edilen İsim',
           'Password':'Parola',
-          'Password Repeat':'Parola Tekrar'
+          'Password Repeat':'Parola Tekrar',
+          'Login':'Giriş Yap'
         }
       }
       // İhtiyaç duyduğunuz diğer dilleri buraya ekleyebilirsiniz
